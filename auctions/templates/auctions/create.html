@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Create New Listing</h2>
+
+    {% if message %}
+        <h2>{{ message }}</h2> 
+    {% endif %}
+    <div class="createform">
+        <form action="{% url 'create' %}" method="post">
+            {% csrf_token %}
+            <input name="title" placeholder="Title" />
+            <textarea name="desc" placeholder="Description of the post..." ></textarea>
+            <div class="custom-select">
+                <select name="category">
+                    <option>Fashion</option>
+                    <option>Home</option>
+                    <option>Sports</option>
+                </select>
+            </div>
+            <input type="number" name="startingprice" placeholder="45$" />
+            <input name="imageurl" placeholder="http://imageurl.image/image-location"/>
+            <input type="submit" />
+        </form>
+    </div>
+{% endblock %}

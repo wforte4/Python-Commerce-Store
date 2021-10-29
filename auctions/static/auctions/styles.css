@@ -1,0 +1,72 @@
+body {
+    padding: 30px;
+}
+
+.auctions {
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+}
+.auction {
+    max-height: 400px;
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    border-bottom: 3px solid #bd9c33;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    overflow: hidden;
+    position: relative;
+}
+.auction h3, .listing h3 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 36px;
+}
+.auction img {
+    width: 100%;
+}
+.custom-select select {
+    appearance: none;
+    width: 100%;
+    padding: 2px;
+    border: none;
+}
+.custom-select {
+    padding: 5px;
+    margin: 5px;
+    margin-left: 10px;
+}
+
+.listing {
+    width: 100%;
+    position: relative;
+}
+.listing img {
+    width: 400px;
+}
+.createform form  {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 400px;
+}
+.createform input, .createform textarea {
+    margin: 10px;
+    width: 100%;
+    padding: 10px;
+}
+.categories {
+    float: left;
+    width: 100%;
+}
+.categories ul li {
+    list-style: none;
+    font: 16px default;
+    float: left;
+    padding: 5px;
+}
+.categories ul a {
+    text-decoration: none;
+}
