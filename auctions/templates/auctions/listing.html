@@ -1,20 +1,33 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Listing</h2>
 
-    <a href="/addtowatchlist/{{ listing.id }}"><h3>Add To WatchList</h3></a>
     <div class="listing">
         <h1>{{ listing.title }}</h1>
         <h3>{{ listing.startingprice }}$</h3>
         <img src={{ listing.imageurl }} />
         <p>{{ listing.desc }}</p>
     </div>
-    {% if user.is_authenticated %}
-        <h2>Bid on this Item</h2>
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <input type="number" />
-        </form>
-    {% endif %}
+    <div class="listing-bottom">
+        {% if user.is_authenticated %}
+            {% if isOnWatchList %}
+                <a href="/removefromwatchlist/{{ listing.id }}" style="color: red;"><h4>Remove From WatchList</h4></a>
+            {% else %}
+                <a href="/addtowatchlist/{{ listing.id }}" style="color: blue;"><h4>Add To WatchList</h4></a>
+            {% endif %}
+            <h2>Bid on this Item</h2>
+            <form action="{% url 'bidding' %}" method="post">
+                {% csrf_token %}
+                <input name="listingid" value="{{ listing.id }}" hidden/>
+                <input name="amount" type="number" placeholder="{{ listing.startingprice }}" min="{{ listing.startingprice }}" />
+                <button type="submit">Place bid</button>
+            </form>
+
+            <h2>Comments</h2>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %} 
+                <textarea></textarea>
+            </form>
+        {% endif %}
+    </div>
 {% endblock %}

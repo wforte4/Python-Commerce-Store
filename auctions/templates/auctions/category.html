@@ -1,7 +1,7 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>{{ category }}</h2>
+    <h2>Category: {{ category }}</h2>
 
     <div class="auctions">
         {% for listing in categorizedListings %}
